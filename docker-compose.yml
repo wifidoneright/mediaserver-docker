@@ -126,7 +126,7 @@ services:
 #      - NZBGET_SCRIPT_DIR=${NZBGET_SCRIPT_DIR}
 #      - FILEBOT_PORT=${FILEBOT_PORT}
 #    volumes:
-#      - ${CONFIG_DIR}/nzbget:/config
+#      - ${CONFIG_DIR}/Nzbget:/config
 #      - ${DOWNLOAD_DIR}/nzb:/downloads/nzb
 
   nzbget:
@@ -149,7 +149,7 @@ services:
       - RADARR_API_KEY=${RADARR_API_KEY}
       - RADARR_PORT=${RADARR_PORT}
     volumes:
-      - ${CONFIG_DIR}/nzbget:/config
+      - ${CONFIG_DIR}/Nzbget:/config
       - ${DOWNLOAD_DIR}/nzb:/downloads/nzb
 
   sonarr:
@@ -163,7 +163,7 @@ services:
       - PGID=${PGID}
       - TZ=${TIMEZONE}
     volumes:
-      - ${CONFIG_DIR}/sonarr:/config
+      - ${CONFIG_DIR}/Sonarr:/config
       - ${DOWNLOAD_DIR}:/data/completed/tv/
       - ${TV_DIR}:/tv
 
@@ -178,7 +178,7 @@ services:
       - PGID=${PGID}
       - TZ=${TIMEZONE}
     volumes:
-      - ${CONFIG_DIR}/radarr:/config
+      - ${CONFIG_DIR}/Radarr:/config
       - ${DOWNLOAD_DIR}:/data/completed/movies/
       - ${MOVIES_DIR}:/movies
 
@@ -193,7 +193,7 @@ services:
       - PGID=${PGID}
       - TZ=${TIMEZONE}
     volumes:
-      - ${CONFIG_DIR}/bazarr:/config
+      - ${CONFIG_DIR}/Bazarr:/config
       - ${TV_DIR}:/tv
       - ${MOVIES_DIR}:/movies
 
@@ -209,7 +209,7 @@ services:
       - TZ=${TIMEZONE}
       - JACKETT_KEY=0000
     volumes:
-      - ${CONFIG_DIR}/jackett:/config
+      - ${CONFIG_DIR}/Jackett:/config
       - ${CONFIG_DIR}/jackett/downloads:/downloads
 
   plex:
@@ -234,7 +234,7 @@ services:
       - VERSION=latest
       - PLUGIN_LIST=${PLUGIN_LIST}
     volumes:
-      - ${CONFIG_DIR}/plex:/config
+      - ${CONFIG_DIR}/Plex:/config
       - ${MEDIA_DIR}:/data
 #     devices:
 #       - "/dev/dri/card0:/dev/dri/card0"
@@ -251,7 +251,7 @@ services:
       - PGID=${PGID}
       - TZ=${TIMEZONE}
     volumes:
-      - ${CONFIG_DIR}/tautulli:/config
+      - ${CONFIG_DIR}/Tautulli:/config
       - "${CONFIG_DIR}/plex/Library/Application Support/Plex Media Server/Logs:/logs:ro"
 
   heimdall:
@@ -266,7 +266,7 @@ services:
       - "${HEIMDALL_PORT}:80"
       - "${HEIMDALL_SSL_PORT}:443"
     volumes:
-      - ${CONFIG_DIR}/heimdall:/config
+      - ${CONFIG_DIR}/Heimdall:/config
 
   letsencrypt:
     image: ghostserverd/letsencrypt
