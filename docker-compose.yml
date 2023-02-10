@@ -337,10 +337,10 @@ services:
 #       - /var/run/docker.sock:/var/run/docker.sock
 #       - ${CONFIG_DIR}/portainer:/data
 
-  watchtower:
-    image: containrrr/watchtower
-    container_name: watchtower
-    command: --cleanup
-    restart: always
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+#   watchtower:
+#     image: containrrr/watchtower
+#     container_name: watchtower
+#     command: --cleanup
+#     restart: always
+#     volumes:
+#       - /var/run/docker.sock:/var/run/docker.sock
