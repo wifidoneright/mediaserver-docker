@@ -181,8 +181,8 @@ services:
       - RADARR_PORT=${RADARR_PORT}
     volumes:
       - ${CONFIG_DIR}/Sabnzbd:/config
-      - ${MEDIA_DIR}/usenet/usenet:/data/usenet
-      - ${MEDIA_DIR2}/usenet/usenet:/data2/usenet
+      - ${MEDIA_DIR}/usenet:/data/usenet
+      - ${MEDIA_DIR2}/usenet:/data2/usenet
   overseerr:
     # image: ghostserverd/nzbget
     image: docker.io/hotio/overseerr:latest
