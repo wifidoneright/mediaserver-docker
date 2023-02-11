@@ -133,7 +133,7 @@ services:
 
   nzbget:
     # image: ghostserverd/nzbget
-    image: linuxserver/docker-sabnzbd
+    image: linuxserver/sabnzbd
     container_name: nzbget
     restart: always
     ports:
