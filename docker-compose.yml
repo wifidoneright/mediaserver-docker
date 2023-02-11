@@ -154,8 +154,8 @@ services:
       - RADARR_PORT=${RADARR_PORT}
     volumes:
       - ${CONFIG_DIR}/Nzbget:/config
-      - ${MEDIA_DIR}/usenet/usenet:/data/usenet
-      - ${MEDIA_DIR2}/usenet/usenet:/data2/usenet
+      - ${MEDIA_DIR}/usenet:/data/usenet
+      - ${MEDIA_DIR2}/usenet:/data2/usenet
 
   sabnzbd:
     # image: ghostserverd/nzbget
