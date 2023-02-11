@@ -152,7 +152,8 @@ services:
       - RADARR_PORT=${RADARR_PORT}
     volumes:
       - ${CONFIG_DIR}/Nzbget:/config
-      - ${DOWNLOAD_DIR}/usenet:/data2/usenet
+      - ${MEDIA_DIR}/usenet/usenet:/data/usenet
+      - ${MEDIA_DIR2}/usenet/usenet:/data2/usenet
 
   sonarr:
     image: ghostserverd/sonarr
@@ -166,8 +167,8 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - ${CONFIG_DIR}/Sonarr:/config
-      - ${DOWNLOAD_DIR}:/data/completed/tv/
-      - ${TV_DIR}:/tv
+      - ${MEDIA_DIR}:/data
+      - ${MEDIA_DIR2}:/data2
 
   radarr:
     image: ghostserverd/radarr
@@ -181,8 +182,8 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - ${CONFIG_DIR}/Radarr:/config
-      - ${DOWNLOAD_DIR}:/data/completed/movies/
-      - ${MOVIES_DIR}:/movies
+      - ${DOWNLOAD_DIR}:/data
+      - ${MOVIES_DIR}:/data2
 
   bazarr:
     image: ghostserverd/bazarr
@@ -196,8 +197,8 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - ${CONFIG_DIR}/Bazarr:/config
-      - ${TV_DIR}:/tv
-      - ${MOVIES_DIR}:/movies
+      - ${MEDIA_DIR}:/data
+      - ${MEDIA_DIR2}:/data2
 
   jackett:
     image: ghostserverd/jackett
