@@ -235,8 +235,8 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - ${CONFIG_DIR}/Radarr:/config
-      - ${DOWNLOAD_DIR}:/data
-      - ${MOVIES_DIR}:/data2
+      - ${MEDIA_DIR}:/data
+      - ${MEDIA_DIR2}:/data2
 
   bazarr:
     # image: ghostserverd/bazarr
