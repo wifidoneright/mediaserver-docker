@@ -133,11 +133,11 @@ services:
 
   nzbget:
     # image: ghostserverd/nzbget
-    image: linuxserver/sabnzbd
+    # image: linuxserver/sabnzbd
+    image: linuxserver/nzbget
     container_name: nzbget
     restart: always
     ports:
-      - "8080:8080"
       - "${NZBGET_PORT}:6789"
     environment:
       - PUID=${PUID}
@@ -157,6 +157,32 @@ services:
       - ${MEDIA_DIR}/usenet/usenet:/data/usenet
       - ${MEDIA_DIR2}/usenet/usenet:/data2/usenet
 
+  sabnzbd:
+    # image: ghostserverd/nzbget
+    image: linuxserver/sabnzbd
+    container_name: sabnzbd
+    restart: always
+    ports:
+      - "8080:8080"
+      - "9090:9090"
+      # - "${NZBGET_PORT}:6789"
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TIMEZONE}
+      - NZBGET_WEB_USER=${NZBGET_WEB_USER}
+      - NZBGET_WEB_PASS=${NZBGET_WEB_PASS}
+      - NZBGET_MAIN_DIR=${NZBGET_MAIN_DIR}
+      - NZBGET_SCRIPT_DIR=${NZBGET_SCRIPT_DIR}
+      - FILEBOT_PORT=${FILEBOT_PORT}
+      - SONARR_API_KEY=${SONARR_API_KEY}
+      - SONARR_PORT=${SONARR_PORT}
+      - RADARR_API_KEY=${RADARR_API_KEY}
+      - RADARR_PORT=${RADARR_PORT}
+    volumes:
+      - ${CONFIG_DIR}/Sabnzbd:/config
+      - ${MEDIA_DIR}/usenet/usenet:/data/usenet
+      - ${MEDIA_DIR2}/usenet/usenet:/data2/usenet
   overseerr:
     # image: ghostserverd/nzbget
     image: docker.io/hotio/overseerr:latest
