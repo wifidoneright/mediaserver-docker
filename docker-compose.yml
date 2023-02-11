@@ -132,7 +132,8 @@ services:
 #      - ${DOWNLOAD_DIR}/nzb:/downloads/nzb
 
   nzbget:
-    image: ghostserverd/nzbget
+    # image: ghostserverd/nzbget
+    image: linuxserver/docker-sabnzbd
     container_name: nzbget
     restart: always
     ports:
@@ -156,7 +157,8 @@ services:
       - ${MEDIA_DIR2}/usenet/usenet:/data2/usenet
 
   sonarr:
-    image: ghostserverd/sonarr
+    # image: ghostserverd/sonarr
+    image: docker.io/hotio/sonarr:release
     container_name: sonarr
     restart: always
     ports:
@@ -171,7 +173,8 @@ services:
       - ${MEDIA_DIR2}:/data2
 
   radarr:
-    image: ghostserverd/radarr
+    # image: ghostserverd/radarr
+    image: docker.io/hotio/radarr:release
     container_name: radarr
     restart: always
     ports:
@@ -186,7 +189,8 @@ services:
       - ${MOVIES_DIR}:/data2
 
   bazarr:
-    image: ghostserverd/bazarr
+    # image: ghostserverd/bazarr
+    image: docker.io/hotio/bazarr:release
     container_name: bazarr
     restart: always
     ports:
@@ -201,7 +205,8 @@ services:
       - ${MEDIA_DIR2}:/data2
 
   jackett:
-    image: ghostserverd/jackett
+    # image: ghostserverd/jackett
+    image: docker.io/linuxserver/jackett:latest
     container_name: jackett
     restart: always
     ports:
@@ -216,7 +221,8 @@ services:
       - ${CONFIG_DIR}/jackett/downloads:/downloads
 
   plex:
-    image: ghostserverd/plex
+    # image: ghostserverd/plex
+    image: docker.io/linuxserver/plex:latest
     container_name: plex
     restart: always
     ports:
@@ -245,7 +251,8 @@ services:
 #       - "/dev/dri/renderD128:/dev/dri/renderD128"
 
   tautulli:
-    image: ghostserverd/tautulli
+    # image: ghostserverd/tautulli
+    image: docker.io/linuxserver/tautulli:latest
     container_name: tautulli
     restart: always
     ports:
@@ -259,7 +266,8 @@ services:
       - "${CONFIG_DIR}/plex/Library/Application Support/Plex Media Server/Logs:/logs:ro"
 
   heimdall:
-    image: ghostserverd/heimdall
+    # image: ghostserverd/heimdall
+    image: linuxserver/heimdall
     container_name: heimdall
     restart: always
     environment:
