@@ -79,6 +79,7 @@ services:
       - ${CONFIG_DIR}/transmission:/config
       - ${DOWNLOAD_DIR}:/downloads
       - ${MEDIA_DIR}:/media
+      - ${MEDIA_DIR2}:/media
 
   filebot:
     image: ghostserverd/filebot:4.9.x
@@ -105,6 +106,7 @@ services:
       - ${CONFIG_DIR}/filebot:/config
       - ${DOWNLOAD_DIR}:/downloads
       - ${MEDIA_DIR}:/media
+      - ${MEDIA_DIR2}:/media
       - ${BASE_DIR}:/share
 
 ### this is how to define the nzbget service to send all traffic through the wireguard container
@@ -236,6 +238,7 @@ services:
     volumes:
       - ${CONFIG_DIR}/Plex:/config
       - ${MEDIA_DIR}:/data
+      - ${MEDIA_DI2R}:/data
 #     devices:
 #       - "/dev/dri/card0:/dev/dri/card0"
 #       - "/dev/dri/renderD128:/dev/dri/renderD128"
