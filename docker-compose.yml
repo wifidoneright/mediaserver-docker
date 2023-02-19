@@ -357,7 +357,6 @@ services:
       - sonarr
       - radarr
       - bazarr
-      - nzbget
       - transmission
       - plex
       - tautulli
