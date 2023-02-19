@@ -169,8 +169,8 @@ services:
       - RADARR_PORT=${RADARR_PORT}
     volumes:
       - ${CONFIG_DIR}/Qbittorrent:/config
-      - ${MEDIA_DIR}/usenet:/data/usenet
-      - ${MEDIA_DIR2}/usenet:/data2/usenet
+      - ${MEDIA_DIR}/torrents:/data/torrents
+      - ${MEDIA_DIR2}/torrents:/data2/torrents
   sabnzbd:
     # image: ghostserverd/nzbget
     image: linuxserver/sabnzbd
