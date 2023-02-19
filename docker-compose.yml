@@ -145,7 +145,32 @@ services:
   #     - ${CONFIG_DIR}/Nzbget:/config
   #     - ${MEDIA_DIR}/usenet:/data/usenet
   #     - ${MEDIA_DIR2}/usenet:/data2/usenet
-
+  qbittorrent:
+    # image: ghostserverd/nzbget
+    image: linuxserver/qbittorrent
+    container_name: qbittorrent
+    restart: always
+    ports:
+      - 6881:6881
+      - 6881:6881/udp
+      - "${QBIT_PORT}:8080"
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TIMEZONE}
+      - NZBGET_WEB_USER=${NZBGET_WEB_USER}
+      - NZBGET_WEB_PASS=${NZBGET_WEB_PASS}
+      - NZBGET_MAIN_DIR=${NZBGET_MAIN_DIR}
+      - NZBGET_SCRIPT_DIR=${NZBGET_SCRIPT_DIR}
+      - FILEBOT_PORT=${FILEBOT_PORT}
+      - SONARR_API_KEY=${SONARR_API_KEY}
+      - SONARR_PORT=${SONARR_PORT}
+      - RADARR_API_KEY=${RADARR_API_KEY}
+      - RADARR_PORT=${RADARR_PORT}
+    volumes:
+      - ${CONFIG_DIR}/Qbittorrent:/config
+      - ${MEDIA_DIR}/usenet:/data/usenet
+      - ${MEDIA_DIR2}/usenet:/data2/usenet
   sabnzbd:
     # image: ghostserverd/nzbget
     image: linuxserver/sabnzbd
