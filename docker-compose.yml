@@ -286,7 +286,7 @@ services:
 
   plex:
     # image: ghostserverd/plex
-    image: docker.io/linuxserver/plex:latest
+    image: plexinc/pms-docker:latest
     container_name: plex
     restart: always
     ports:
