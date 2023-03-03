@@ -306,6 +306,7 @@ services:
       - TZ=${TIMEZONE}
       - VERSION=latest
       - PLUGIN_LIST=${PLUGIN_LIST}
+      - PLEX_CLAIM=${PLEX_CLAIM}
     volumes:
       - ${CONFIG_DIR}/Plex:/config
       - ${MEDIA_DIR}:/data
