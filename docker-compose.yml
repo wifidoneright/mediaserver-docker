@@ -359,7 +359,7 @@ services:
       - radarr
       - bazarr
       - transmission
-      - plex
+#       - plex
       - tautulli
       - netdata
       - heimdall
