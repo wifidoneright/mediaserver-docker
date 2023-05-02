@@ -284,36 +284,36 @@ services:
       - ${CONFIG_DIR}/Jackett:/config
       - ${CONFIG_DIR}/jackett/downloads:/downloads
 
-  plex:
-    # image: ghostserverd/plex
-    image: plexinc/pms-docker:latest
-    container_name: plex
-    restart: always
-    ports:
-      - "${PLEX_WEB_PORT}:32400"
-      # - "1900:1900"
-      # - "3005:3005"
-      # - "5353:5353"
-      # - "8324:8324"
-      # - "32410:32410"
-      # - "32412:32412"
-      # - "32413:32413"
-      # - "32414:32414"
-      # - "32469:32469"
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TIMEZONE}
-      - VERSION=latest
-      - PLUGIN_LIST=${PLUGIN_LIST}
-      - PLEX_CLAIM=${PLEX_CLAIM}
-    volumes:
-      - ${CONFIG_DIR}/Plex:/config
-      - ${MEDIA_DIR}:/data
-      - ${MEDIA_DIR2}:/data2
-#     devices:
-#       - "/dev/dri/card0:/dev/dri/card0"
-#       - "/dev/dri/renderD128:/dev/dri/renderD128"
+#   plex:
+#     # image: ghostserverd/plex
+#     image: plexinc/pms-docker:latest
+#     container_name: plex
+#     restart: always
+#     ports:
+#       - "${PLEX_WEB_PORT}:32400"
+#       # - "1900:1900"
+#       # - "3005:3005"
+#       # - "5353:5353"
+#       # - "8324:8324"
+#       # - "32410:32410"
+#       # - "32412:32412"
+#       # - "32413:32413"
+#       # - "32414:32414"
+#       # - "32469:32469"
+#     environment:
+#       - PUID=${PUID}
+#       - PGID=${PGID}
+#       - TZ=${TIMEZONE}
+#       - VERSION=latest
+#       - PLUGIN_LIST=${PLUGIN_LIST}
+#       - PLEX_CLAIM=${PLEX_CLAIM}
+#     volumes:
+#       - ${CONFIG_DIR}/Plex:/config
+#       - ${MEDIA_DIR}:/data
+#       - ${MEDIA_DIR2}:/data2
+# #     devices:
+# #       - "/dev/dri/card0:/dev/dri/card0"
+# #       - "/dev/dri/renderD128:/dev/dri/renderD128"
 
   tautulli:
     # image: ghostserverd/tautulli
