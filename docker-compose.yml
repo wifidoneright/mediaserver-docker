@@ -197,28 +197,48 @@ services:
       - ${CONFIG_DIR}/Sabnzbd:/config
       - ${MEDIA_DIR}/usenet:/data/usenet
       - ${MEDIA_DIR2}/usenet:/data2/usenet
-  overseerr:
-    # image: ghostserverd/nzbget
-    image: docker.io/hotio/overseerr:latest
-    container_name: overseerr
-    restart: always
-    ports:
-      - "${OVERSEERR_PORT}:5055"
+  # overseerr:
+  #   # image: ghostserverd/nzbget
+  #   image: docker.io/linuxserver/overseerr:latest
+  #   container_name: overseerr
+  #   restart: always
+  #   ports:
+  #     - "${OVERSEERR_PORT}:5055"
+  #   environment:
+  #     - PUID=${PUID}
+  #     - PGID=${PGID}
+  #     - TZ=${TIMEZONE}
+  #     # - OVERSEERR_WEB_USER=${OVERSEERR_WEB_USER}
+  #     # - OVERSEERR_WEB_PASS=${OVERSEERR_WEB_PASS}
+  #     # - OVERSEERR_MAIN_DIR=${OVERSEERR_MAIN_DIR}
+  #     # - OVERSEERR_SCRIPT_DIR=${OVERSEERR_SCRIPT_DIR}
+  #     # - FILEBOT_PORT=${FILEBOT_PORT}
+  #     # - SONARR_API_KEY=${SONARR_API_KEY}
+  #     # - SONARR_PORT=${SONARR_PORT}
+  #     # - RADARR_API_KEY=${RADARR_API_KEY}
+  #     # - RADARR_PORT=${RADARR_PORT}
+  #   volumes:
+  #     - ${CONFIG_DIR}/Overseerr:/config
+
+
+  seerr:
+    image: ghcr.io/seerr-team/seerr:latest
+    init: true
+    container_name: seerr
     environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TIMEZONE}
-      # - OVERSEERR_WEB_USER=${OVERSEERR_WEB_USER}
-      # - OVERSEERR_WEB_PASS=${OVERSEERR_WEB_PASS}
-      # - OVERSEERR_MAIN_DIR=${OVERSEERR_MAIN_DIR}
-      # - OVERSEERR_SCRIPT_DIR=${OVERSEERR_SCRIPT_DIR}
-      # - FILEBOT_PORT=${FILEBOT_PORT}
-      # - SONARR_API_KEY=${SONARR_API_KEY}
-      # - SONARR_PORT=${SONARR_PORT}
-      # - RADARR_API_KEY=${RADARR_API_KEY}
-      # - RADARR_PORT=${RADARR_PORT}
+      - LOG_LEVEL=debug
+      - PORT=5055 #optional
+    ports:
+      - 5055:5055
     volumes:
-      - ${CONFIG_DIR}/Overseerr:/config
+      - ${CONFIG_DIR}/Seerr:/app/config
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/settings/public || exit 1
+      start_period: 20s
+      timeout: 3s
+      interval: 15s
+      retries: 3
+    restart: unless-stopped
 
   sonarr:
     # image: ghostserverd/sonarr
